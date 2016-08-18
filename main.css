@@ -1,0 +1,145 @@
+﻿body {
+				background-color: black;
+}
+h1 {
+				color: #3366FF;
+				display: inline-block;
+				margin: 3%;
+}
+
+h3 {
+				color: #00CC00;
+				display: inline-block;
+				margin-left: 20%;
+}
+
+.intro {
+				background-color: #666699;
+				border: 2px solid orange;
+				border-radius: 5px;
+				margin: -2.5% 3% 0 3%;
+				box-shadow: 6px 6px 6px orange;
+}
+
+.title {
+				font-size: 25px;
+				font-family: Impact;
+				color: black;
+				display: inline-block;
+				margin: 1% 42% 0 42%;
+}
+
+.first {
+				color: black;
+				font-family: Arial;
+				padding: 3% 5%;
+}
+
+.carTitle {
+				color: #FFFF00;
+				font-size: 30px;
+				padding: 0;
+				text-align: center;
+				font-family: "Eras Bold ITC", Gungsuh, Aerial;
+}
+
+.carImages {
+				width: 	100%;
+				height: 330px;
+				margin: 0;
+				padding: 0;
+				display: inline-block;
+}
+
+.brz {
+				border-radius: 3%;
+				padding: 0;
+				margin: 0 7% 0 0;
+				width: 100%;
+				height: auto;
+				display: inline-block;
+}
+
+.skyline {
+				border-radius: 3%;
+				padding: 0;
+				margin: 0 0 0 0;
+				width: 100%;
+				height: auto;
+				display: inline-block;
+}
+
+.supra {
+				border-radius: 3%;
+				padding: 0;
+				margin: 0 0 0 0;
+				width: 100%;
+				height: auto;
+				display: inline-block;
+}
+
+.showOnHoverBrz {
+				color: red;
+				display: none;
+				font-size: 50px;
+				font-family: "Arial Black";
+				padding: 0;
+				margin: 0 0 0 32%;
+}
+
+.showOnHoverSkyline {
+				color: red;
+				display: none;
+				font-size: 50px;
+				font-family: "Arial Black";
+				padding: 0;
+				margin: 0 0 0 22%;
+}
+
+.showOnHoverSupra {
+				color: red;
+				display: none;
+				font-size: 50px;
+				font-family: "Arial Black";
+				padding: 0;
+				margin: 0 0 0 19.5%;
+}
+
+.imgOne {
+				border-radius: 3%;
+				padding: 0;
+				margin: 0 7% 0 5%;
+				width: 25%;
+				height: auto;
+				display: inline-block;
+}
+
+.imgTwo {
+				border-radius: 3%;
+				padding: 0;
+				margin: 0 0 0 0;
+				width: 25%;
+				height: auto;
+				display: inline-block;
+}
+
+.imgThree {
+				border-radius: 3%;
+				padding: 0;
+				margin: 0 0 0 7%;
+				width: 25%;
+				height: 305px;
+				display: inline-block;
+}
+
+.imgOne:hover .showOnHoverBrz {
+				display: inline-block;
+}
+
+.imgTwo:hover .showOnHoverSkyline {
+				display: inline-block;
+}
+
+.imgThree:hover .showOnHoverSupra {
+				display: inline-block;
+}
