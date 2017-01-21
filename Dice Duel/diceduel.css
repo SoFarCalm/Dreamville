@@ -1,0 +1,55 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+h1 {
+  display: inline;
+}
+
+#header {
+  text-align: center;
+  font-size: 40px;
+  padding: 50px;
+  background-color: black;
+  color: white;
+}
+/*Combat Text Window Class */
+#combat {
+  font-size: 17px;
+  margin-top: 25px;
+  margin-right: 25px;
+  width: 500px;
+  height: 500px;
+  float: right;
+}
+
+#ground {
+  position: absolute;
+  left: 500px;
+  top: 797px;
+  z-index: -1;
+}
+
+#btn {
+  font-size: 20px;
+  width: 100px;
+  height: 25px;
+  margin-left: 790px;
+  margin-top: 200px;
+}
+
+#fighter1 {
+  position: absolute;
+  left: 635px;
+  top: 575px;
+}
+
+#fighter2 {
+  position: absolute;
+  left: 905px;
+  top: 525px;
+}
