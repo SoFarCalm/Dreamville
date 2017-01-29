@@ -1,5 +1,5 @@
 var fighter1 = {
-  name: "You",
+  name: "Hero",
   hp: 30
 };
 
@@ -8,9 +8,33 @@ var fighter2 = {
   hp: 35
 };
 
-var btn = document.getElementById('btn');
+
+//Fighters Health//
+var fighter1health = document.getElementById('fighter1health');
+var fighter2health = document.getElementById('fighter2health');
+fighter1health.innerHTML = "HP: " + fighter1.hp;
+fighter2health.innerHTML = "HP: " + fighter2.hp;
+
+var btn = document.getElementById('btn1');
 btn.addEventListener("click", battle);
 
+//Reset Game//
+var resetbtn = document.getElementById('btn2');
+resetbtn.addEventListener('click', function(){
+  var combatBox = document.getElementById('combat');
+  var chupa = document.getElementById('fighter2');
+  var hero = document.getElementById('fighter1');
+  fighter1.hp = 30;
+  fighter2.hp = 35;
+  fighter1health.innerHTML = "HP: " + fighter1.hp;
+  fighter2health.innerHTML = "HP: " + fighter2.hp;
+  hero.classList.remove("defeat");
+  chupa.classList.remove("defeat");
+  btn.disabled = false;
+  combatBox.value = "";
+});
+
+//Calculate Fighter1 Damage//
 function fighter1Dmg(){
     var combatBox = document.getElementById('combat');
     var combatTxt = "";
@@ -24,9 +48,11 @@ function fighter1Dmg(){
     combatTxt += fighter1.name + " deal " + totalDmg + " damage to " + fighter2.name + "!";
     combatBox.value += combatTxt + "\n";
     fighter2.hp -= totalDmg;
+    fighter2health.innerHTML = "HP: " + fighter2.hp;
   }
 }
 
+//Calculate Fighter2 Damage//
 function fighter2Dmg(){
     var chupa = document.getElementById('fighter2');
     var hero = document.getElementById('fighter1');
@@ -38,18 +64,19 @@ function fighter2Dmg(){
 
     if(fighter2.hp <= 0){
       combatBox.value += "\n" + "Hooray! " + fighter1.name + " have defeated " + fighter2.name + "!";
-      btn.disabled = true;
+      btn1.disabled = true;
       chupa.classList.add("defeat");
       return;
     }
     else if(fighter1.hp <= 0){
-      btn.disabled = true;
+      btn1.disabled = true;
       hero.classList.add('defeat');
       return;
     } else {
     combatTxt += fighter2.name + " hits " + fighter1.name + " for " + totalDmg + "!";
     combatBox.value += combatTxt + "\n" + "\n";
     fighter1.hp -= totalDmg;
+    fighter1health.innerHTML = "HP: " + fighter1.hp;
   }
 }
 

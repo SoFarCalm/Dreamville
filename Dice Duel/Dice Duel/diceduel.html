@@ -9,12 +9,14 @@
 <div class="container">
   <div id="header">
     <img src="images\dice1.jpg" width="200px;" height="128px;" />
-    <h1>Dice Duel<h1>
+    <h1>Duel<h1>
   </div>
 </div>
 
-<div id="combatcontainer">
+<div id="combat-container">
   <div class="scene">
+    <div id="health1" class="hp"><span id="fighter1health"></span></div>
+    <div id="health2" class="hp"><span id="fighter2health"></span></div>
    <img id="fighter1" src="images\2.5.png" />
    <img id="fighter2" src="images\3.5.png" />
    <img id="ground" src="images\1.5.png" />
@@ -25,7 +27,7 @@
   <textarea id="combat"></textarea>
 </div>
 
-<div id="btn-contain"><button id="btn">ATTACK</button></div>
+<div id="btn-container"><button id="btn1" class="btns">ATTACK</button><button id="btn2" class="btns">RESET</button></div>
 
 <script src="diceduel.js"></script>
 </body>

@@ -18,19 +18,41 @@ h1 {
   color: white;
 }
 
+#combat-container{
+  margin-top: 25px;
+}
+
+.hp {
+  font-size: 25px;
+  display: inline;
+  width: 20px;
+  height: 20px;
+}
+
+#fighter1health {
+  position: absolute;
+  right: 475px;
+  top: 20px;
+}
+
+#fighter2health {
+  position: absolute;
+  right: 105px;
+  top: 20px;
+}
+
 .scene {
   position: relative;
-  margin-top: 50px;
   width: 50%;
-  height: 325px;
+  height: 400px;
   display: inline-block;
   float: left;
 }
 
 #fighter1 {
   position: absolute;
-  top: 60px;
-  left: 0;
+  top: 135px;
+  right: 400px;
   transition: opacity 2s;
 }
 
@@ -40,8 +62,8 @@ h1 {
 
 #fighter2 {
   position: absolute;
-  top: 15px;
-  left: 300px;
+  top: 90px;
+  right: 50px;
   transition: opacity 2s;
 }
 
@@ -53,29 +75,33 @@ h1 {
   position: absolute;
   z-index: -1;
   bottom: 5px;
-  left: 0;
+  right: 20px;
 }
 
 .output {
-  margin-top: 50px;
   display: inline-block;
   width: 50%;
-  height: 325px;
+  height: 400px;
   float: right;
 }
 
 #combat {
-  float: right;
-  margin-right: 5px;
+  font-size: 16px;
+  margin-top: 30px;
+  float: left;
+  margin-left: 100px;
   width: 400px;
-  height: 300px;
+  height: 350px;
 }
 
-#btn-contain{
+#btn-container{
+  display: inline-block;
+  width: 100%;
+  margin-top: 100px;
   text-align: center;
 }
 
-#btn {
+.btns {
   margin: auto;
   width: 100px;
   height: 30px;
