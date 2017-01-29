@@ -10,11 +10,13 @@ var fighter2 = {
 
 
 //Fighters Health//
+function health(){
 var fighter1health = document.getElementById('fighter1health');
 var fighter2health = document.getElementById('fighter2health');
 fighter1health.innerHTML = "HP: " + fighter1.hp;
 fighter2health.innerHTML = "HP: " + fighter2.hp;
 
+}
 var btn = document.getElementById('btn1');
 btn.addEventListener("click", battle);
 
@@ -48,8 +50,13 @@ function fighter1Dmg(){
     combatTxt += fighter1.name + " deal " + totalDmg + " damage to " + fighter2.name + "!";
     combatBox.value += combatTxt + "\n";
     fighter2.hp -= totalDmg;
+    if(fighter2.hp < 0){
+      fighter2.hp = 0;
+      fighter2health.innerHTML = "HP: " + fighter2.hp;
+    } else {
     fighter2health.innerHTML = "HP: " + fighter2.hp;
   }
+ }
 }
 
 //Calculate Fighter2 Damage//
@@ -76,9 +83,16 @@ function fighter2Dmg(){
     combatTxt += fighter2.name + " hits " + fighter1.name + " for " + totalDmg + "!";
     combatBox.value += combatTxt + "\n" + "\n";
     fighter1.hp -= totalDmg;
-    fighter1health.innerHTML = "HP: " + fighter1.hp;
+    if(fighter1.hp < 0){
+      fighter1.hp = 0;
+      fighter1health.innerHTML = "HP: " + fighter1.hp;
+    } else {
+      fighter1health.innerHTML = "HP: " + fighter1.hp;
+    }
   }
 }
+
+health()
 
 function battle(){
   fighter1Dmg();
