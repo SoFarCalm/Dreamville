@@ -44,19 +44,15 @@ function fighter1Dmg(){
     var dice2 = Math.floor(Math.random() * 6 + 1);
     var totalDmg = dice1 + dice2;
 
-    if(fighter1.hp <= 0){
-      combatBox.value += fighter1.name + " have been defeated by " + fighter2.name + "!";
-    } else {
     combatTxt += fighter1.name + " deal " + totalDmg + " damage to " + fighter2.name + "!";
     combatBox.value += combatTxt + "\n";
     fighter2.hp -= totalDmg;
-    if(fighter2.hp < 0){
+    if(fighter2.hp <= 0){
       fighter2.hp = 0;
       fighter2health.innerHTML = "HP: " + fighter2.hp;
     } else {
     fighter2health.innerHTML = "HP: " + fighter2.hp;
   }
- }
 }
 
 //Calculate Fighter2 Damage//
@@ -75,21 +71,19 @@ function fighter2Dmg(){
       chupa.classList.add("defeat");
       return;
     }
-    else if(fighter1.hp <= 0){
+    combatTxt += fighter2.name + " hits " + fighter1.name + " for " + totalDmg + "!";
+    combatBox.value += combatTxt + "\n" + "\n";
+    fighter1.hp -= totalDmg;
+    if(fighter1.hp <= 0){
+      fighter1.hp = 0;
+      fighter1health.innerHTML = "HP: " + fighter1.hp;
+      combatBox.value += fighter1.name + " have been defeated by " + fighter2.name + "!";
       btn1.disabled = true;
       hero.classList.add('defeat');
       return;
     } else {
-    combatTxt += fighter2.name + " hits " + fighter1.name + " for " + totalDmg + "!";
-    combatBox.value += combatTxt + "\n" + "\n";
-    fighter1.hp -= totalDmg;
-    if(fighter1.hp < 0){
-      fighter1.hp = 0;
-      fighter1health.innerHTML = "HP: " + fighter1.hp;
-    } else {
       fighter1health.innerHTML = "HP: " + fighter1.hp;
     }
-  }
 }
 
 health()
