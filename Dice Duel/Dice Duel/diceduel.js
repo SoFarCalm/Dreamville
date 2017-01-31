@@ -53,7 +53,7 @@ function nextEnemy(){
 }
 
 //Load Beginning Characters//
-var hero = new Player("Blue Bomber", 100);
+var hero = new Player(prompt("Please name your hero"), 95);
 var currentEnemyCounter = 0;
 var currentEnemy = enemy(currentEnemyCounter);
 
