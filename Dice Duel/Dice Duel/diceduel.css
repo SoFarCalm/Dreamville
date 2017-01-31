@@ -29,15 +29,15 @@ h1 {
   height: 20px;
 }
 
-#fighter1health {
+#playerhealth {
   position: absolute;
-  right: 475px;
+  left: 425px;
   top: 20px;
 }
 
-#fighter2health {
+#enemyhealth {
   position: absolute;
-  right: 105px;
+  right: 100px;
   top: 20px;
 }
 
@@ -47,33 +47,39 @@ h1 {
   height: 400px;
   display: inline-block;
   float: left;
+  overflow: hidden;
 }
 
-#fighter1 {
+/*#background{
   position: absolute;
-  top: 135px;
+  left: 135px;
+  z-index: -1;
+}*/
+
+#player-img {
+  position: absolute;
+  bottom: 35px;
   right: 400px;
   transition: opacity 2s;
 }
 
-#fighter1.defeat {
+#player-img.defeat {
   opacity: 0;
 }
 
-#fighter2 {
+#enemy-img {
   position: absolute;
-  top: 90px;
+  bottom: 35px;
   right: 50px;
   transition: opacity 2s;
 }
 
-#fighter2.defeat {
+#enemy-img.defeat {
   opacity: 0;
 }
 
 #ground {
   position: absolute;
-  z-index: -1;
   bottom: 5px;
   right: 20px;
 }

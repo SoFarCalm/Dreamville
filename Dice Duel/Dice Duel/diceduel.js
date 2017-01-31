@@ -1,22 +1,70 @@
-var fighter1 = {
-  name: "Hero",
-  hp: 30
-};
+function Player (name, health){
+  this.name = name;
+  this.health = health;
+}
 
-var fighter2 = {
-  name: "El Chupacabra",
-  hp: 35
-};
+//Enemy List//
+var enemies = [
+  {name: "Robot", health: 25},
+  {name: "Chupa", health: 35},
+  {name: "Cloud", health: 50}
+];
 
+//Enemy Images//
+var enemyImgs = [
+  "images/enemy1.png",
+  "images/enemy2.png",
+  "images/cloud.png"
+];
+
+//Creates A New Enemy//
+var createEnemy = function enemyCreator(obj) {
+  var newEnemy = {}
+  for(var i in obj) {
+    newEnemy[i] = obj[i];
+  }
+  return newEnemy;
+}
+
+//Grabs Enemy Image//
+var createEnemyImage = function grabEnemyImg(imgsrc){
+  var enemyImage = document.getElementById('enemy-img');
+  enemyImage.src = imgsrc;
+}
+
+//Grab Current Enemy & Current Enemy Image//
+var enemy = function grabCurrentEnemy(index){
+  var grabEnemy = createEnemy(enemies[index]);
+  var grabEnemyImg = createEnemyImage(enemyImgs[index]);
+  return grabEnemy;
+}
+
+//Load Next Enemy//
+function nextEnemy(){
+  var enemyImage = document.getElementById('enemy-img');
+  var enemyhealth = document.getElementById('enemyhealth');
+  var combatBox = document.getElementById('combat');
+  currentEnemyCounter++;
+  currentEnemy = enemy(currentEnemyCounter);
+  enemyhealth.innerHTML = currentEnemy.name + " </br> HP: " + currentEnemy.health;
+  enemyImage.classList.remove('defeat');
+  combatBox.value = "";
+  btn.disabled = false;
+}
+
+//Load Beginning Characters//
+var hero = new Player("Blue Bomber", 100);
+var currentEnemyCounter = 0;
+var currentEnemy = enemy(currentEnemyCounter);
 
 //Fighters Health//
 function health(){
-var fighter1health = document.getElementById('fighter1health');
-var fighter2health = document.getElementById('fighter2health');
-fighter1health.innerHTML = "HP: " + fighter1.hp;
-fighter2health.innerHTML = "HP: " + fighter2.hp;
-
+  var playerhealth = document.getElementById('playerhealth');
+  var enemyhealth = document.getElementById('enemyhealth');
+  playerhealth.innerHTML = hero.name + " </br> HP: " + hero.health;
+  enemyhealth.innerHTML = currentEnemy.name + " </br> HP: " + currentEnemy.health;
 }
+
 var btn = document.getElementById('btn1');
 btn.addEventListener("click", battle);
 
@@ -24,71 +72,76 @@ btn.addEventListener("click", battle);
 var resetbtn = document.getElementById('btn2');
 resetbtn.addEventListener('click', function(){
   var combatBox = document.getElementById('combat');
-  var chupa = document.getElementById('fighter2');
-  var hero = document.getElementById('fighter1');
-  fighter1.hp = 30;
-  fighter2.hp = 35;
-  fighter1health.innerHTML = "HP: " + fighter1.hp;
-  fighter2health.innerHTML = "HP: " + fighter2.hp;
-  hero.classList.remove("defeat");
-  chupa.classList.remove("defeat");
+  var enemyImg = document.getElementById('enemy-img');
+  var playerImg = document.getElementById('player-img');
+  currentEnemyCounter = 0;
+  currentEnemy = enemy(currentEnemyCounter);
+  hero.health = 100;
+  playerhealth.innerHTML = hero.name + " </br> HP: " + hero.health;
+  enemyhealth.innerHTML = currentEnemy.name + " </br> HP: " + currentEnemy.health;
+  playerImg.classList.remove("defeat");
+  enemyImg.classList.remove("defeat");
   btn.disabled = false;
   combatBox.value = "";
 });
 
-//Calculate Fighter1 Damage//
-function fighter1Dmg(){
+//Calculate Damage Done//
+var damageDone = function calculateDmg(){
+  var dice1 = Math.floor(Math.random() * 6 + 1);
+  var dice2 = Math.floor(Math.random() * 6 + 1);
+  var totalDmg = dice1 + dice2;
+  return totalDmg;
+}
+
+//Player Phase//
+function playerTurn(){
     var combatBox = document.getElementById('combat');
     var combatTxt = "";
-    var dice1 = Math.floor(Math.random() * 6 + 1);
-    var dice2 = Math.floor(Math.random() * 6 + 1);
-    var totalDmg = dice1 + dice2;
+    var damage = damageDone();
 
-    combatTxt += fighter1.name + " deal " + totalDmg + " damage to " + fighter2.name + "!";
+    combatTxt += hero.name + " deals " + damage + " damage to " + currentEnemy.name + "!";
     combatBox.value += combatTxt + "\n";
-    fighter2.hp -= totalDmg;
-    if(fighter2.hp <= 0){
-      fighter2.hp = 0;
-      fighter2health.innerHTML = "HP: " + fighter2.hp;
+    currentEnemy.health -= damage;
+    if(currentEnemy.health <= 0){
+      currentEnemy.health = 0;
+      enemyhealth.innerHTML = currentEnemy.name + " </br> HP: " + currentEnemy.health;
     } else {
-    fighter2health.innerHTML = "HP: " + fighter2.hp;
+    enemyhealth.innerHTML = currentEnemy.name + " </br> HP: " + currentEnemy.health;
   }
 }
 
-//Calculate Fighter2 Damage//
-function fighter2Dmg(){
-    var chupa = document.getElementById('fighter2');
-    var hero = document.getElementById('fighter1');
+//Enemy Phase//
+ function enemyTurn(){
+    var enemyImg = document.getElementById('enemy-img');
+    var playerImg = document.getElementById('player-img');
     var combatBox = document.getElementById('combat');
+    var damage = damageDone();
     var combatTxt = "";
-    var dice1 = Math.floor(Math.random() * 6 + 1);
-    var dice2 = Math.floor(Math.random() * 6 + 1);
-    var totalDmg = dice1 + dice2;
 
-    if(fighter2.hp <= 0){
-      combatBox.value += "\n" + "Hooray! " + fighter1.name + " have defeated " + fighter2.name + "!";
-      btn1.disabled = true;
-      chupa.classList.add("defeat");
-      return;
+    if(currentEnemy.health <= 0){
+      combatBox.value += "\n" + "Hooray! " + hero.name + " has defeated " + currentEnemy.name + "!";
+      btn.disabled = true;
+      enemyImg.classList.add("defeat");
+      return setTimeout(nextEnemy, 3000);
     }
-    combatTxt += fighter2.name + " hits " + fighter1.name + " for " + totalDmg + "!";
+    combatTxt += currentEnemy.name + " hits " + hero.name + " for " + damage + "!";
     combatBox.value += combatTxt + "\n" + "\n";
-    fighter1.hp -= totalDmg;
-    if(fighter1.hp <= 0){
-      fighter1.hp = 0;
-      fighter1health.innerHTML = "HP: " + fighter1.hp;
-      combatBox.value += fighter1.name + " have been defeated by " + fighter2.name + "!";
+    hero.health -= damage;
+    if(hero.health <= 0){
+      hero.health = 0;
+      playerhealth.innerHTML = hero.name + " </br> HP: " + hero.health;
+      combatBox.value += hero.name + " have been defeated by " + currentEnemy.name + "!";
       btn1.disabled = true;
-      hero.classList.add('defeat');
+      playerImg.classList.add('defeat');
       return;
     } else {
-      fighter1health.innerHTML = "HP: " + fighter1.hp;
-    }
+      playerhealth.innerHTML = hero.name + " </br> HP: " + hero.health;
+  }
 }
 
-health()
+health();
 
 function battle(){
-  fighter1Dmg();
-  fighter2Dmg();
+  playerTurn();
+  enemyTurn();
 }
