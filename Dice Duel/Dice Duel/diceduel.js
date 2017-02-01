@@ -5,7 +5,7 @@ function Player (name, health){
 
 //Enemy List//
 var enemies = [
-  {name: "Robot", health: 25},
+  {name: "Quickman", health: 25},
   {name: "Chupa", health: 35},
   {name: "Cloud", health: 50}
 ];
@@ -14,7 +14,7 @@ var enemies = [
 var enemyImgs = [
   "images/enemy1.png",
   "images/enemy2.png",
-  "images/cloud.png"
+  "images/enemy3.png"
 ];
 
 //Creates A New Enemy//
@@ -53,7 +53,7 @@ function nextEnemy(){
 }
 
 //Load Beginning Characters//
-var hero = new Player(prompt("Please name your hero"), 95);
+var hero = new Player("Megaman", 95);
 var currentEnemyCounter = 0;
 var currentEnemy = enemy(currentEnemyCounter);
 
@@ -76,7 +76,7 @@ resetbtn.addEventListener('click', function(){
   var playerImg = document.getElementById('player-img');
   currentEnemyCounter = 0;
   currentEnemy = enemy(currentEnemyCounter);
-  hero.health = 100;
+  hero.health = 95;
   playerhealth.innerHTML = hero.name + " </br> HP: " + hero.health;
   enemyhealth.innerHTML = currentEnemy.name + " </br> HP: " + currentEnemy.health;
   playerImg.classList.remove("defeat");

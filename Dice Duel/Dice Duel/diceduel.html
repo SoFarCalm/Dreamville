@@ -1,33 +1,39 @@
 <!DOCTYPE html>
 <html lang="en" class="nojs">
 <head>
-  <title>Dice Duel</title>
+  <title>My Project</title>
   <link href="diceduel.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 
 <div class="container">
   <div id="header">
-    <img src="images\dice1.jpg" width="200px;" height="128px;" />
+    <img src="images\dice1.jpg" width="150px;" height="78px;" />
     <h1>Duel<h1>
   </div>
 </div>
 
 <div id="combat-container">
-  <div class="scene">
-    <div id="health1" class="hp"><span id="playerhealth"></span></div>
-    <div id="health2" class="hp"><span id="enemyhealth"></span></div>
-   <img id="player-img" src="images\megaman.jpg" />
-   <img id="enemy-img" src="" />
-   <img id="ground" src="images\1.5.png" />
+  <div id="player-info-container">
+      <img id="playericon" src="images\mmicon.png" style="width: 125px; height: 125px;" />
+      <span id="playerhealth"></span>
+  </div>
+  <div id="combat-scene">
+    <img id="background" src="images\background.jpg" />
+    <img id="player-img" src="images\megaman.png" />
+    <img id="enemy-img" src="" />
+  </div>
+  <div id="enemy-info-container">
+      <img id="enemyicon" src="images\enemyicon1.png" style="width: 100px; height: 100px;" />
+      <span id="enemyhealth"></span>
   </div>
 </div>
 
 <div class="output">
+  <button id="btn1" class="btns">ATTACK</button>
   <textarea id="combat"></textarea>
+  <button id="btn2" class="btns">RESET</button>
 </div>
-
-<div id="btn-container"><button id="btn1" class="btns">ATTACK</button><button id="btn2" class="btns">RESET</button></div>
 
 <script src="diceduel.js"></script>
 </body>

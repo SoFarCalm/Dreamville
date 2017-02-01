@@ -11,55 +11,44 @@ h1 {
 }
 
 #header {
+  background-color: black;
+  color: white;
   text-align: center;
   font-size: 40px;
   padding: 50px;
-  background-color: black;
-  color: white;
 }
 
 #combat-container{
   margin-top: 25px;
 }
 
-.hp {
-  font-size: 25px;
-  display: inline;
-  width: 20px;
-  height: 20px;
+/*Player Content*/
+#player-info-container {
+  position: relative;
+  display: inline-block;
+  width: 24.75%;
+  height: 400px;
+}
+
+#playericon {
+  position: absolute;
+  display: inline-block;
+  top: 0;
+  left: 0;
 }
 
 #playerhealth {
   position: absolute;
-  left: 425px;
-  top: 20px;
+  font-family: Impact;
+  font-size: 35px;
+  left: 125px;
+  top: 25px;
 }
-
-#enemyhealth {
-  position: absolute;
-  right: 100px;
-  top: 20px;
-}
-
-.scene {
-  position: relative;
-  width: 50%;
-  height: 400px;
-  display: inline-block;
-  float: left;
-  overflow: hidden;
-}
-
-/*#background{
-  position: absolute;
-  left: 135px;
-  z-index: -1;
-}*/
 
 #player-img {
   position: absolute;
-  bottom: 35px;
-  right: 400px;
+  bottom: 10px;
+  right: 700px;
   transition: opacity 2s;
 }
 
@@ -67,10 +56,33 @@ h1 {
   opacity: 0;
 }
 
+/*Enemy Content */
+#enemy-info-container {
+  position: relative;
+  display: inline-block;
+  width: 24.75%;
+  height: 400px;
+}
+
+#enemyicon {
+  position: absolute;
+  display: inline-block;
+  top: 20px;
+  right: 0;
+}
+
+#enemyhealth {
+  position: absolute;
+  font-family: Impact;
+  font-size: 35px;
+  right: 125px;
+  top: 25px;
+}
+
 #enemy-img {
   position: absolute;
-  bottom: 35px;
-  right: 50px;
+  bottom: 10px;
+  left: 700px;
   transition: opacity 2s;
 }
 
@@ -78,37 +90,60 @@ h1 {
   opacity: 0;
 }
 
-#ground {
-  position: absolute;
-  bottom: 5px;
-  right: 20px;
+/*Combat Scene */
+#combat-scene {
+  position: relative;
+  width: 50%;
+  height: 400px;
+  display: inline-block;
+  overflow: hidden;
+}
+
+#background{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  z-index: -1;
 }
 
 .output {
+  position: relative;
   display: inline-block;
-  width: 50%;
-  height: 400px;
-  float: right;
+  width: 100%;
+  text-align: center;
 }
 
 #combat {
   font-size: 16px;
-  margin-top: 30px;
-  float: left;
-  margin-left: 100px;
-  width: 400px;
-  height: 350px;
-}
-
-#btn-container{
-  display: inline-block;
-  width: 100%;
-  margin-top: 100px;
-  text-align: center;
+  width: 800px;
+  height: 175px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .btns {
-  margin: auto;
-  width: 100px;
-  height: 30px;
+  width: 150px;
+  height: 60px;
+  font-size: 25px;
+}
+
+#btn1 {
+  position: absolute;
+  bottom: 50px;
+  left: 200px;
+}
+
+#btn2 {
+  position: absolute;
+  bottom: 50px;
+  right: 200px;
+}
+
+@media screen and (max-width: 1440px){
+  #player-img {right: 450px;}
+  #enemy-img {left: 450px;}
+  #btn1 {left: 80px;}
+  #btn2 {right: 80px;}
+  #player-info-container {width: 24.65%;}
+  #enemy-info-container {width: 24.65%;}
 }
