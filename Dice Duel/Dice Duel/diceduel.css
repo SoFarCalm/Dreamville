@@ -47,7 +47,7 @@ h1 {
 
 #player-img {
   position: absolute;
-  bottom: 10px;
+  bottom: 0;
   right: 700px;
   transition: opacity 2s;
 }
@@ -81,7 +81,7 @@ h1 {
 
 #enemy-img {
   position: absolute;
-  bottom: 10px;
+  bottom: -4px;
   left: 700px;
   transition: opacity 2s;
 }

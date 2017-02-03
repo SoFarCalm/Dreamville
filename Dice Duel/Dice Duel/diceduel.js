@@ -6,16 +6,17 @@ function Player (name, health){
 //Enemy List//
 var enemies = [
   {name: "Quickman", health: 25},
-  {name: "Chupa", health: 35},
-  {name: "Cloud", health: 50}
+  {name: "Heatman", health: 35},
+  {name: "Skullman", health: 50}
 ];
 
 //Enemy Images//
 var enemyImgs = [
-  "images/enemy1.png",
-  "images/enemy2.png",
-  "images/enemy3.png"
+  ["images/quickman1.png", "images/quickman2.png"],
+  ["images/heatman1.png", "images/heatman2.png"],
+  ["images/skullman1.png", "images/skullman2.png"]
 ];
+
 
 //Creates A New Enemy//
 var createEnemy = function enemyCreator(obj) {
@@ -27,15 +28,17 @@ var createEnemy = function enemyCreator(obj) {
 }
 
 //Grabs Enemy Image//
-var createEnemyImage = function grabEnemyImg(imgsrc){
+var createEnemyImage = function grabEnemyImg(imgsrc, iconsrc){
   var enemyImage = document.getElementById('enemy-img');
+  var enemyIcon = document.getElementById('enemyicon')
   enemyImage.src = imgsrc;
+  enemyIcon.src = iconsrc;
 }
 
 //Grab Current Enemy & Current Enemy Image//
 var enemy = function grabCurrentEnemy(index){
   var grabEnemy = createEnemy(enemies[index]);
-  var grabEnemyImg = createEnemyImage(enemyImgs[index]);
+  var grabEnemyImg = createEnemyImage(enemyImgs[index][0], enemyImgs[index][1]);
   return grabEnemy;
 }
 
@@ -122,7 +125,7 @@ function playerTurn(){
       combatBox.value += "\n" + "Hooray! " + hero.name + " has defeated " + currentEnemy.name + "!";
       btn.disabled = true;
       enemyImg.classList.add("defeat");
-      return setTimeout(nextEnemy, 3000);
+      return setTimeout(nextEnemy, 2000);
     }
     combatTxt += currentEnemy.name + " hits " + hero.name + " for " + damage + "!";
     combatBox.value += combatTxt + "\n" + "\n";
@@ -145,3 +148,7 @@ function battle(){
   playerTurn();
   enemyTurn();
 }
+
+var nums = [["zero, zero"], ["one", "one"]];
+
+console.log(nums[0][0]);
