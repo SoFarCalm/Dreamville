@@ -5,21 +5,13 @@ function Player (name, health){
 
 //Enemy List//
 var enemies = [
-  {name: "Quickman", health: 25},
-  {name: "Heatman", health: 35},
-  {name: "Skullman", health: 50}
+  {name: "Quickman", health: 25, image: "images/quickman1.png", icon: "images/quickman2.png"},
+  {name: "Heatman", health: 35, image: "images/heatman1.png", icon: "images/heatman2.png"},
+  {name: "Skullman", health: 50, image: "images/skullman1.png", icon: "images/skullman2.png"}
 ];
-
-//Enemy Images//
-var enemyImgs = [
-  ["images/quickman1.png", "images/quickman2.png"],
-  ["images/heatman1.png", "images/heatman2.png"],
-  ["images/skullman1.png", "images/skullman2.png"]
-];
-
 
 //Creates A New Enemy//
-var createEnemy = function enemyCreator(obj) {
+var createEnemy = function(obj) {
   var newEnemy = {}
   for(var i in obj) {
     newEnemy[i] = obj[i];
@@ -28,7 +20,7 @@ var createEnemy = function enemyCreator(obj) {
 }
 
 //Grabs Enemy Image//
-var createEnemyImage = function grabEnemyImg(imgsrc, iconsrc){
+var createEnemyImage = function(imgsrc, iconsrc){
   var enemyImage = document.getElementById('enemy-img');
   var enemyIcon = document.getElementById('enemyicon')
   enemyImage.src = imgsrc;
@@ -36,9 +28,9 @@ var createEnemyImage = function grabEnemyImg(imgsrc, iconsrc){
 }
 
 //Grab Current Enemy & Current Enemy Image//
-var enemy = function grabCurrentEnemy(index){
+var enemy = function(index){
   var grabEnemy = createEnemy(enemies[index]);
-  var grabEnemyImg = createEnemyImage(enemyImgs[index][0], enemyImgs[index][1]);
+  var grabEnemyImg = createEnemyImage(enemies[index].image, enemies[index].icon);
   return grabEnemy;
 }
 
@@ -68,6 +60,7 @@ function health(){
   enemyhealth.innerHTML = currentEnemy.name + " </br> HP: " + currentEnemy.health;
 }
 
+//Attack Button//
 var btn = document.getElementById('btn1');
 btn.addEventListener("click", battle);
 
@@ -148,7 +141,3 @@ function battle(){
   playerTurn();
   enemyTurn();
 }
-
-var nums = [["zero, zero"], ["one", "one"]];
-
-console.log(nums[0][0]);
