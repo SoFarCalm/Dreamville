@@ -1,3 +1,6 @@
+
+
+
 function Player (name, health){
   this.name = name;
   this.health = health;
@@ -78,7 +81,7 @@ resetbtn.addEventListener('click', function(){
   playerImg.classList.remove("defeat");
   enemyImg.classList.remove("defeat");
   btn.disabled = false;
-  combatBox.value = "";
+  combatBox.innerHTML = "";
 });
 
 //Calculate Damage Done//
@@ -91,18 +94,21 @@ var damageDone = function calculateDmg(){
 
 //Player Phase//
 function playerTurn(){
+    var megaman = hero.name.bold();
+    var robotmaster = currentEnemy.name.bold();
     var combatBox = document.getElementById('combat');
     var combatTxt = "";
     var damage = damageDone();
 
-    combatTxt += hero.name + " deals " + damage + " damage to " + currentEnemy.name + "!";
-    combatBox.value += combatTxt + "\n";
+    combatTxt += megaman + " deals " + damage + " damage to " + robotmaster + "!";
+    combatBox.innerHTML += combatTxt.fontcolor("blue") + "</br>";
+    combatBox.scrollTop = combatBox.scrollHeight;
     currentEnemy.health -= damage;
     if(currentEnemy.health <= 0){
       currentEnemy.health = 0;
-      enemyhealth.innerHTML = currentEnemy.name + " </br> HP: " + currentEnemy.health;
+      enemyhealth.innerHTML = robotmaster + " </br> HP: " + currentEnemy.health;
     } else {
-    enemyhealth.innerHTML = currentEnemy.name + " </br> HP: " + currentEnemy.health;
+    enemyhealth.innerHTML = robotmaster + " </br> HP: " + currentEnemy.health;
   }
 }
 
@@ -111,33 +117,69 @@ function playerTurn(){
     var enemyImg = document.getElementById('enemy-img');
     var playerImg = document.getElementById('player-img');
     var combatBox = document.getElementById('combat');
+    var megaman = hero.name.bold();
+    var robotmaster = currentEnemy.name.bold();
     var damage = damageDone();
     var combatTxt = "";
 
     if(currentEnemy.health <= 0){
-      combatBox.value += "\n" + "Hooray! " + hero.name + " has defeated " + currentEnemy.name + "!";
+      combatBox.innerHTML += "Hooray! " + megaman + " has defeated " + robotmaster + "! </br>" + "</br>";
+      combatBox.scrollTop = combatBox.scrollHeight;
       btn.disabled = true;
       enemyImg.classList.add("defeat");
-      return setTimeout(nextEnemy, 2000);
+      scroll();
+      return setTimeout(nextEnemy, 3000);
     }
-    combatTxt += currentEnemy.name + " hits " + hero.name + " for " + damage + "!";
-    combatBox.value += combatTxt + "\n" + "\n";
+    combatTxt += robotmaster + " hits " + megaman + " for " + damage + "!";
+    combatBox.innerHTML += combatTxt.fontcolor("red") + "</br>";
     hero.health -= damage;
     if(hero.health <= 0){
       hero.health = 0;
-      playerhealth.innerHTML = hero.name + " </br> HP: " + hero.health;
-      combatBox.value += hero.name + " have been defeated by " + currentEnemy.name + "!";
+      playerhealth.innerHTML = megaman + " </br> HP: " + hero.health;
+      combatBox.innerHTML += megaman + " has been defeated by " + robotmaster + "!";
+      combatBox.scrollTop = combatBox.scrollHeight;
       btn1.disabled = true;
       playerImg.classList.add('defeat');
       return;
     } else {
-      playerhealth.innerHTML = hero.name + " </br> HP: " + hero.health;
+      playerhealth.innerHTML = megaman + " </br> HP: " + hero.health;
   }
+}
+
+//Animations
+function shoot(){
+  var megaman = document.getElementById('player-img');
+  megaman.style.webkitAnimation = "none";
+  setTimeout(function(){
+    megaman.style.webkitAnimation = "shoot .3s steps(3)"
+  },10)
+}
+
+function run(){
+  var megaman = document.getElementById('player-img');
+  megaman.style.webkitAnimation = "none";
+  setTimeout(function(){
+    megaman.style.webkitAnimation = "run 1s steps(10) 3"
+  },10)
+}
+
+function scrollbg(){
+  var bg = document.getElementById('background');
+  background.style.webkitAnimation = "none";
+  setTimeout(function(){
+    background.style.webkitAnimation = "scroll linear 3s"
+  },10)
+}
+
+function scroll(){
+  run();
+  scrollbg();
 }
 
 health();
 
 function battle(){
+  shoot();
   playerTurn();
   enemyTurn();
 }

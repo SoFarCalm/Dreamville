@@ -45,10 +45,17 @@ h1 {
   top: 25px;
 }
 
-#player-img {
+#playerimg-container {
   position: absolute;
-  bottom: 0;
   right: 700px;
+  bottom: 10px;
+  display: inline-block;
+  width: 160px;
+  height: 160px;
+  overflow: hidden;
+}
+
+#player-img {
   transition: opacity 2s;
 }
 
@@ -79,10 +86,16 @@ h1 {
   top: 25px;
 }
 
-#enemy-img {
+#enemyimg-container {
   position: absolute;
-  bottom: -4px;
+  width: 160px;
+  height: 160px;
+  display: inline-block;
+  bottom: 10px;
   left: 700px;
+}
+
+#enemy-img {
   transition: opacity 2s;
 }
 
@@ -97,6 +110,7 @@ h1 {
   height: 400px;
   display: inline-block;
   overflow: hidden;
+  border:
 }
 
 #background{
@@ -114,11 +128,14 @@ h1 {
 }
 
 #combat {
+  border: 1px solid black;
+  text-align: left;
   font-size: 16px;
   width: 800px;
   height: 175px;
   margin-left: auto;
   margin-right: auto;
+  overflow-y: scroll;
 }
 
 .btns {
@@ -146,4 +163,17 @@ h1 {
   #btn2 {right: 80px;}
   #player-info-container {width: 24.65%;}
   #enemy-info-container {width: 24.65%;}
+}
+
+/*Animations*/
+@-webkit-keyframes shoot {
+  from{margin-top: 0px;} to{margin-top: -482px;}
+}
+
+@-webkit-keyframes run {
+  from{margin-left: 0px;} to{margin-left: -1604px;}
+}
+
+@-webkit-keyframes scroll {
+  from{margin-left: 0px;} to{margin-left: -799px;}
 }

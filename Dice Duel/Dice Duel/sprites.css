@@ -1,0 +1,16 @@
+/* ----------------------------------------------------
+   created with http://www.codeandweb.com/texturepacker
+   ----------------------------------------------------
+   $TexturePacker:SmartUpdate:854e933d65391d8ddaacd693b232a5bf:09a8fd63fc9ed9a2c22a7694c2263b1f:f62b772fa370474c5d565559c118d7eb$
+   ----------------------------------------------------
+
+   usage: <span class="{-spritename-} sprite"></span>
+
+   replace {-spritename-} with the sprite you like to use
+
+*/
+
+.megaman-sprites {display:inline-block; overflow:hidden; background-repeat: no-repeat;background-image:url(megaman4.png);}
+
+.megaman1 {width:160px; height:480px; background-position: -1px -1px}
+.megaman3 {width:1440px; height:160px; background-position: -163px -1px}
